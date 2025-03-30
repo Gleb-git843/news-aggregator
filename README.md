@@ -1,19 +1,22 @@
-# Агрегатор новостей
+# News Aggregator
 
-Веб-приложение для агрегации новостей из различных RSS-источников.
+Приложение для агрегации новостей из различных источников с возможностью фильтрации по категориям, источникам и времени.
 
 ## Возможности
 
-- Просмотр новостей с фильтрацией по категориям и источникам
-- Управление источниками новостей (добавление, редактирование, удаление)
-- Автоматический сбор новостей из RSS-фидов
-- Адаптивный дизайн
+- Сбор новостей из различных источников
+- Фильтрация новостей по:
+  - Категориям
+  - Источникам
+  - Времени публикации
+- REST API для работы с новостями
+- Статистика по новостям
 
 ## Установка
 
 1. Клонируйте репозиторий:
 ```bash
-git clone https://github.com/yourusername/news-aggregator.git
+git clone https://github.com/your-username/news-aggregator.git
 cd news-aggregator
 ```
 
@@ -29,71 +32,30 @@ venv\Scripts\activate     # для Windows
 pip install -r requirements.txt
 ```
 
-4. Создайте файл .env в корневой директории проекта:
-```
-DATABASE_URL=sqlite:///./news.db
-```
+4. Создайте файл .env на основе .env.example и настройте параметры подключения к базе данных
 
-5. Инициализируйте базу данных:
+5. Создайте базу данных и таблицы:
 ```bash
-python -m app.scripts.init_db
+python -m app.scripts.create_db
 ```
 
-6. Добавьте начальные источники новостей:
+6. Запустите сервер:
 ```bash
-python -m app.scripts.add_sources
+python -m app.scripts.run_server
 ```
 
-## Запуск
+## API Endpoints
 
-1. Запустите приложение:
-```bash
-uvicorn main:app --reload
-```
+- `GET /api/v1/news/` - получение списка новостей
+- `GET /api/v1/news/stats` - получение статистики
+- `GET /api/v1/news/categories` - получение списка категорий
+- `GET /api/v1/news/sources/` - получение списка источников
 
-2. Откройте браузер и перейдите по адресу: http://localhost:8000
+## Параметры фильтрации
 
-## API
-
-API документация доступна по адресу: http://localhost:8000/docs
-
-### Основные эндпоинты:
-
-- GET /api/sources - получение списка источников
-- POST /api/sources - создание нового источника
-- GET /api/sources/{source_id} - получение информации об источнике
-- PUT /api/sources/{source_id} - обновление информации об источнике
-- DELETE /api/sources/{source_id} - удаление источника
-
-## Структура проекта
-
-```
-news-aggregator/
-├── app/
-│   ├── api/
-│   │   └── api.py
-│   ├── core/
-│   │   ├── config.py
-│   │   └── database.py
-│   ├── models/
-│   │   └── news.py
-│   ├── schemas/
-│   │   └── news.py
-│   ├── scripts/
-│   │   ├── init_db.py
-│   │   └── add_sources.py
-│   ├── static/
-│   │   └── css/
-│   │       └── style.css
-│   ├── templates/
-│   │   ├── index.html
-│   │   └── sources.html
-│   └── tasks/
-│       └── news_collector.py
-├── main.py
-├── requirements.txt
-└── README.md
-```
+- `category` - фильтр по категории
+- `source` - фильтр по источнику
+- `hours` - фильтр по времени (последние N часов)
 
 ## Лицензия
 

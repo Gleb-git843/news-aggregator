@@ -1,0 +1,16 @@
+{
+    "git.ignoreLimitWarning": true,
+    "python.defaultInterpreterPath": "C:\\Users\\Iru\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}"
+    ],
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.indexing": true,
+    "python.analysis.packageIndexDepths": [
+        {
+            "name": "fastapi",
+            "depth": 2
+        }
+    ]
+}

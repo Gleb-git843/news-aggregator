@@ -16,7 +16,7 @@
 
 1. Клонируйте репозиторий:
 ```bash
-git clone https://github.com/your-username/news-aggregator.git
+git clone https://github.com/Gleb-git843/news-aggregator.git
 cd news-aggregator
 ```
 
@@ -59,4 +59,4 @@ python -m app.scripts.run_server
 
 ## Лицензия
 
-MIT 
+MIT
